@@ -22,8 +22,10 @@ set wildmenu "enable wildmenu
 set lazyredraw "tells vim to not bother with redrawing screens in the middle of macros, leading to faster macros
 set showmatch "highlights matching [{()}]
 set showcmd "show last command in bottom bar
+set laststatus=2 "turn on airline
+set shortmess+=I "turn off welcome screen
 
-" Configuring TABS
+" Configuring tabs
 set tabstop=4 "number of visual spaces per TAB
 set softtabstop=4 "number of spaces in TAB while editting
 set expandtab "Pressing TAB = inserting n spaces
@@ -34,7 +36,7 @@ set hlsearch "highlight matches
 " https://github.com/haya14busa/incsearch.vim improved incsearch
 
 " ===============================================================================================
-" Remapping/Custom shortcuts
+" Remapping/Custom macros
 " ===============================================================================================
 
 " noremap is a non-recursive remapping, which is safer for vimrc configs. 
@@ -42,9 +44,9 @@ set hlsearch "highlight matches
 let mapleader="," "remapping leader key
 
 "Open Nerdtree tab
-nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <F3> :NERDTreeToggle<CR>
 "Open vimrc 
-nnoremap <leader>ev :vsp $MYVIMRC<CR>
+nnoremap <leader>q :vsp $MYVIMRC<CR>
 "Enter new line in Normal mode
 nnoremap <leader>o o<ESC>x
 "Custom Functions
@@ -58,6 +60,13 @@ function! ToggleNumber()
                 set relativenumber
         endif
 endfunc
+nnoremap <F4> :call ToggleNumber()<CR>
+
+"Auto group to reload vimrc once new changes are saved
+augroup myvimrc
+        au!
+        au BufWritePost .vimrc,vimrc so $MYVIMRC
+augroup end
 " ===============================================================================================
 " Folding
 " ===============================================================================================
