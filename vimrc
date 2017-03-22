@@ -1,15 +1,12 @@
-" ===============================================================================================
+" ================================
 " General Settings
-" ===============================================================================================
-
+" ================================
 execute pathogen#infect()
 set modeline
 set modelines=1 "check the very last line of this file for modeline
-
-" ===============================================================================================
+" ================================
 " User Interface
-" ===============================================================================================
-
+" ================================
 colorscheme evening "set colorscheme
 if &t_Co == 8 && $TERM !~# '^linux\|^Eterm' " Allow color schemes to do bright colors without forcing bold.
   set t_Co=16
@@ -34,17 +31,15 @@ set expandtab "Pressing TAB = inserting n spaces
 set incsearch "search characters as they are entered
 set hlsearch "highlight matches
 " https://github.com/haya14busa/incsearch.vim improved incsearch
-
-" ===============================================================================================
+" ================================
 " Remapping/Custom macros
-" ===============================================================================================
-
+" ================================
 " noremap is a non-recursive remapping, which is safer for vimrc configs. 
 " nnoremap is for Normal mode ie. INSERT mode
 let mapleader="," "remapping leader key
 
 "Open Nerdtree tab
-nnoremap <F3> :NERDTreeToggle<CR>
+nnoremap <leader>n :NERDTreeToggle<CR>
 "Open vimrc 
 nnoremap <leader>q :vsp $MYVIMRC<CR>
 "Enter new line in Normal mode
@@ -60,16 +55,16 @@ function! ToggleNumber()
                 set relativenumber
         endif
 endfunc
-nnoremap <F4> :call ToggleNumber()<CR>
+nnoremap <leader>1 :call ToggleNumber()<CR>
 
 "Auto group to reload vimrc once new changes are saved
 augroup myvimrc
         au!
         au BufWritePost .vimrc,vimrc so $MYVIMRC
 augroup end
-" ===============================================================================================
+" ================================
 " Folding
-" ===============================================================================================
+" ================================
 "Open a fold with zo
 "Close a fold with zm
 " Example Fold {{{
