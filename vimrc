@@ -7,10 +7,8 @@ set modelines=1 "check the very last line of this file for modeline
 " ================================
 " User Interface
 " ================================
+set t_Co=256
 colorscheme evening "set colorscheme
-if &t_Co == 8 && $TERM !~# '^linux\|^Eterm' " Allow color schemes to do bright colors without forcing bold.
-  set t_Co=16
-endif
 set number "turn on line numbering
 syntax enable "turn on syntax highlighting
 filetype plugin indent on "turn on file type detection
