@@ -7,8 +7,7 @@ set modelines=1 "check the very last line of this file for modeline
 " ================================
 " User Interface
 " ================================
-set t_Co=256
-colorscheme evening "set colorscheme
+colorscheme molokai "set colorscheme
 set number "turn on line numbering
 syntax enable "turn on syntax highlighting
 filetype plugin indent on "turn on file type detection
