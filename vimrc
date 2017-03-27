@@ -28,6 +28,7 @@ set expandtab "Pressing TAB = inserting n spaces
 set incsearch "search characters as they are entered
 set hlsearch "highlight matches
 " https://github.com/haya14busa/incsearch.vim improved incsearch
+
 " ================================
 " Remapping/Custom macros
 " ================================
@@ -37,7 +38,7 @@ let mapleader="," "remapping leader key
 
 "Open Nerdtree tab
 nnoremap <leader>n :NERDTreeToggle<CR>
-"Open vimrc 
+"Edit vimrc 
 nnoremap <leader>q :vsp $MYVIMRC<CR>
 "Enter new line in Normal mode
 nnoremap <leader>o o<ESC>x
@@ -54,12 +55,13 @@ function! ToggleNumber()
 endfunc
 nnoremap <leader>1 :call ToggleNumber()<CR>
 
-"Auto group to reload vimrc once new changes are saved
+"Auto reload vimrc once new changes are saved
 augroup myvimrc
         au!
         au BufWritePost .vimrc,vimrc so $MYVIMRC
 augroup end
 
+"Enable templates/skeletons
 augroup templates
         au!
         "read in template files
@@ -67,6 +69,7 @@ augroup templates
         "parse in dynamic text after read
         autocmd BufNewFile * %substitute#\[:VIM_EVAL:\]\(.\{-\}\)\[:END_EVAL:\]#\=eval(submatch(1))#ge
 augroup end
+
 " ================================
 " Folding
 " ================================
