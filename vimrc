@@ -9,7 +9,7 @@ set modelines=1 "check the very last line of this file for modeline
 " ================================
 colorscheme molokai "set colorscheme
 set number "turn on line numbering
-syntax enable "turn on syntax highlighting
+syntax on "turn on syntax highlighting
 filetype plugin indent on "turn on file type detection
 set cursorline "highlight current line
 set wildmenu "enable wildmenu
@@ -58,6 +58,14 @@ nnoremap <leader>1 :call ToggleNumber()<CR>
 augroup myvimrc
         au!
         au BufWritePost .vimrc,vimrc so $MYVIMRC
+augroup end
+
+augroup templates
+        au!
+        "read in template files
+        autocmd BufNewFile *.* silent! execute '0r ~/.vim/templates/skeleton.'.expand("<afile>:e")
+        "parse in dynamic text after read
+        autocmd BufNewFile * %substitute#\[:VIM_EVAL:\]\(.\{-\}\)\[:END_EVAL:\]#\=eval(submatch(1))#ge
 augroup end
 " ================================
 " Folding
