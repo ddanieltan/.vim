@@ -1,12 +1,9 @@
-" ================================
-" General Settings
-" ================================
+" Important Pre-settings {{{
 execute pathogen#infect()
 set modeline
 set modelines=1 "check the very last line of this file for modeline
-" ================================
-" User Interface
-" ================================
+"}}}
+" General Setttings {{{
 colorscheme molokai "set colorscheme
 set number "turn on line numbering
 syntax on "turn on syntax highlighting
@@ -28,9 +25,8 @@ set expandtab "Pressing TAB = inserting n spaces
 set incsearch "search characters as they are entered
 set hlsearch "highlight matches
 " https://github.com/haya14busa/incsearch.vim improved incsearch
-
-" ================================
-" Remapping/Custom macros
+" }}}
+" Remapping/Custom functions {{{
 " ================================
 " noremap is a non-recursive remapping, which is safer for vimrc configs. 
 " nnoremap is for Normal mode ie. INSERT mode
@@ -40,11 +36,14 @@ let mapleader="," "remapping leader key
 nnoremap <leader>n :NERDTreeToggle<CR>
 "Edit vimrc 
 nnoremap <leader>q :vsp $MYVIMRC<CR>
-"Enter new line in Normal mode
+"Enter new line without going into INSERT mode 
 nnoremap <leader>o o<ESC>x
-"Custom Functions
+"Stupid typo in Command modes
+cabbrev Q quit
+cabbrev Wq wq
 
 "Toggle between number and relativenumber
+nnoremap <leader>1 :call ToggleNumber()<CR>
 function! ToggleNumber()
         if(&relativenumber == 1)
                 set norelativenumber
@@ -53,8 +52,13 @@ function! ToggleNumber()
                 set relativenumber
         endif
 endfunc
-nnoremap <leader>1 :call ToggleNumber()<CR>
 
+" Vimgrep for notes
+command! -nargs=1 Ngrep vimgrep "<args>" ~/notes/**/*.md
+nnoremap ] :cn
+nnoremap [ :cp
+" }}}
+" Autogroups {{{ 
 "Auto reload vimrc once new changes are saved
 augroup myvimrc
         au!
@@ -69,17 +73,6 @@ augroup templates
         "parse in dynamic text after read
         autocmd BufNewFile * %substitute#\[:VIM_EVAL:\]\(.\{-\}\)\[:END_EVAL:\]#\=eval(submatch(1))#ge
 augroup end
-
-" ================================
-" Folding
-" ================================
-"Open a fold with zo
-"Close a fold with zm
-" Example Fold {{{
-"Line 1
-"Line 2
-"Line 3
 " }}}
-
 " Default Folding configs when opening this file
 " vim:foldmethod=marker:foldlevel=0
