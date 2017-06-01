@@ -6,6 +6,7 @@ set modelines=1 "check the very last line of this file for modeline
 " General Setttings {{{
 colorscheme molokai "set colorscheme
 set number "turn on line numbering
+set noerrorbells "turn off beeping
 syntax on "turn on syntax highlighting
 filetype plugin indent on "turn on file type detection
 set cursorline "highlight current line
@@ -30,7 +31,7 @@ set hlsearch "highlight matches
 " ================================
 " noremap is a non-recursive remapping, which is safer for vimrc configs. 
 " nnoremap is for Normal mode ie. INSERT mode
-let mapleader="," "remapping leader key
+let mapleader="," 
 
 "Open Nerdtree tab
 nnoremap <leader>n :NERDTreeToggle<CR>
