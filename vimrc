@@ -11,21 +11,23 @@ syntax on "turn on syntax highlighting
 filetype plugin indent on "turn on file type detection
 set cursorline "highlight current line
 set wildmenu "enable wildmenu
-set lazyredraw "tells vim to not bother with redrawing screens in the middle of macros, leading to faster macros
+set lazyredraw "don't bother with redrawing screens in the middle of macros
 set showmatch "highlights matching [{()}]
-set showcmd "show last command in bottom bar
-set laststatus=2 "turn on airline
 set shortmess+=I "turn off welcome screen
 
-" Configuring tabs
+" Airline
+set showcmd "show last command in bottom bar
+set laststatus=2 "turn on airline
+
+" Tabs
 set tabstop=4 "number of visual spaces per TAB
 set softtabstop=4 "number of spaces in TAB while editting
 set expandtab "Pressing TAB = inserting n spaces
 
-" Configuring Search (/)
-set incsearch "search characters as they are entered
+"Search (/)
 set hlsearch "highlight matches
-" https://github.com/haya14busa/incsearch.vim improved incsearch
+set incsearch "show partial matches for search phrase
+set ignorecase "ignore upper/lower cases when searching
 " }}}
 " Remapping/Custom functions {{{
 " ================================
@@ -42,10 +44,13 @@ nnoremap <leader>o o<ESC>x
 "Stupid typo in Command modes
 cabbrev Q quit
 cabbrev Wq wq
+cabbrev W w
+"Turn off number line
+nnoremap <leader>1 :set number! number?<CR>
 
 "Toggle between number and relativenumber
-nnoremap <leader>1 :call ToggleNumber()<CR>
-function! ToggleNumber()
+nnoremap <leader>0 :call ToggleRelativeNumber()<CR>
+function! ToggleRelativeNumber()
         if(&relativenumber == 1)
                 set norelativenumber
                 set number
