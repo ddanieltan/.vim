@@ -1,16 +1,29 @@
-" Important Pre-settings {{{
-execute pathogen#infect()
-set modeline
-set modelines=1 "check the very last line of this file for modeline
+" Plugins{{{
+" vim-plug settings
+call plug#begin('~/.vim/plugged')
+Plug 'flazz/vim-colorschemes'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
+Plug 'vim-airline/vim-airline'
+Plug 'godlygeek/tabular'
+Plug 'fatih/vim-go'
+call plug#end()
 "}}}
 " General Setttings {{{
+" Modeline
+set modeline
+set modelines=1 "check the very last line of this file for modeline
+
+" Colorscheme, numbers, highlighting
 colorscheme molokai "set colorscheme
 set number "turn on line numbering
-set noerrorbells "turn off beeping
 syntax on "turn on syntax highlighting
 filetype plugin indent on "turn on file type detection
 set cursorline "highlight current line
+
+" Misc.
 set wildmenu "enable wildmenu
+set noerrorbells "turn off beeping
 set lazyredraw "don't bother with redrawing screens in the middle of macros
 set showmatch "highlights matching [{()}]
 set shortmess+=I "turn off welcome screen
