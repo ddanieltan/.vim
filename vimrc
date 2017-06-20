@@ -7,6 +7,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'vim-airline/vim-airline'
 Plug 'godlygeek/tabular'
 Plug 'fatih/vim-go'
+Plug 'plasticboy/vim-markdown'
 call plug#end()
 "}}}
 " General Setttings {{{
@@ -37,10 +38,13 @@ set tabstop=4 "number of visual spaces per TAB
 set softtabstop=4 "number of spaces in TAB while editting
 set expandtab "Pressing TAB = inserting n spaces
 
-"Search (/)
+" Search (/)
 set hlsearch "highlight matches
 set incsearch "show partial matches for search phrase
 set ignorecase "ignore upper/lower cases when searching
+
+" vim-markdown
+let g:vim_markdown_folding_disabled = 1 "disable folding in markdown
 " }}}
 " Remapping/Custom functions {{{
 " ================================
