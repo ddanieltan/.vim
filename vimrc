@@ -1,55 +1,63 @@
 " Plugins{{{
-" vim-plug settings
 call plug#begin('~/.vim/plugged')
 Plug 'flazz/vim-colorschemes'
-Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree',{'on': 'NERDTreeToggle'}
 Plug 'vim-airline/vim-airline'
-Plug 'godlygeek/tabular'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'fatih/vim-go'
 Plug 'plasticboy/vim-markdown'
+Plug 'junegunn/vim-easy-align'
+Plug 'tpope/vim-commentary'
 call plug#end()
 "}}}
-" General Setttings {{{
+" General Settings {{{
 " Modeline
 set modeline
 set modelines=1 "check the very last line of this file for modeline
 
-" Colorscheme, numbers, highlighting
-colorscheme molokai "set colorscheme
-set number "turn on line numbering
-syntax on "turn on syntax highlighting
-filetype plugin indent on "turn on file type detection
-set cursorline "highlight current line
+" UI
+colorscheme hybrid  " set colorscheme
+set background=dark " set dark background
+set number          " turn on line numbering
+set colorcolumn=100 " set marker for 100th column
+syntax on           " turn on syntax highlighting
+set cursorline      " highlight current line
+set lazyredraw      " don't bother with redrawing screens in the middle of macros
+set showmatch       " highlights matching [{()}]
+set shortmess+=I    " turn off welcome screen
 
 " Misc.
-set wildmenu "enable wildmenu
-set noerrorbells "turn off beeping
-set lazyredraw "don't bother with redrawing screens in the middle of macros
-set showmatch "highlights matching [{()}]
-set shortmess+=I "turn off welcome screen
-
-" Airline
-set showcmd "show last command in bottom bar
-set laststatus=2 "turn on airline
+filetype plugin indent on " turn on file type detection
+set wildmenu              " enable wildmenu
+set belloff=all           " turn off beeping
+set encoding=utf-8        " use utf-8 encoding
 
 " Tabs
-set tabstop=4 "number of visual spaces per TAB
-set softtabstop=4 "number of spaces in TAB while editting
-set expandtab "Pressing TAB = inserting n spaces
+set tabstop=4     " number of visual spaces per TAB
+set softtabstop=4 " number of spaces in TAB while editting
+set expandtab     " Pressing TAB = inserting n spaces
 
 " Search (/)
-set hlsearch "highlight matches
-set incsearch "show partial matches for search phrase
-set ignorecase "ignore upper/lower cases when searching
+set hlsearch   " highlight matches
+set incsearch  " show partial matches for search phrase
+set ignorecase " ignore upper/lower cases when searching
+"}}}
+"{{{ Plugin settings
+" Airline
+set showcmd                   " show last command in bottom bar
+set laststatus=2              " turn on airline
+let g:airline_theme='badwolf' " looks nice with hybrid colorscheme
 
 " vim-markdown
-let g:vim_markdown_folding_disabled = 1 "disable folding in markdown
+let g:vim_markdown_folding_disabled = 1 "disable auto folding in markdown
+
+" vim-easy-align
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
+
 " }}}
 " Remapping/Custom functions {{{
-" ================================
-" noremap is a non-recursive remapping, which is safer for vimrc configs. 
-" nnoremap is for Normal mode ie. INSERT mode
 let mapleader="," 
 
 "Open Nerdtree tab
@@ -62,10 +70,10 @@ nnoremap <leader>o o<ESC>x
 cabbrev Q quit
 cabbrev Wq wq
 cabbrev W w
-"Turn off number line
+"Toggle number line
 nnoremap <leader>1 :set number! number?<CR>
 
-"Toggle between number and relativenumber
+"Toggle relativenumber
 nnoremap <leader>0 :call ToggleRelativeNumber()<CR>
 function! ToggleRelativeNumber()
         if(&relativenumber == 1)
