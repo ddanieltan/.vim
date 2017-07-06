@@ -8,6 +8,7 @@ Plug 'fatih/vim-go'
 Plug 'plasticboy/vim-markdown'
 Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-commentary'
+Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 "}}}
 " General Settings {{{
@@ -70,6 +71,13 @@ nnoremap <leader>o o<ESC>x
 cabbrev Q quit
 cabbrev Wq wq
 cabbrev W w
+
+" Moving from 1 window to another Ctrl-hjkl
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+
 "Toggle number line
 nnoremap <leader>1 :set number! number?<CR>
 
