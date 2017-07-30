@@ -26,6 +26,7 @@ set cursorline      " highlight current line
 set lazyredraw      " don't bother with redrawing screens in the middle of macros
 set showmatch       " highlights matching [{()}]
 set shortmess+=I    " turn off welcome screen
+set title           " changes terminal title
 
 " Misc.
 filetype plugin indent on " turn on file type detection
