@@ -2,8 +2,6 @@
 call plug#begin('~/.vim/plugged')
 Plug 'flazz/vim-colorschemes'
 Plug 'scrooloose/nerdtree',{'on': 'NERDTreeToggle'}
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'fatih/vim-go'
 Plug 'plasticboy/vim-markdown'
 Plug 'junegunn/vim-easy-align'
@@ -44,12 +42,30 @@ set hlsearch   " highlight matches
 set incsearch  " show partial matches for search phrase
 set ignorecase " ignore upper/lower cases when searching
 "}}}
-"{{{ Plugin settings
-" Airline
-set showcmd                   " show last command in bottom bar
-set laststatus=2              " turn on airline
-let g:airline_theme='badwolf' " looks nice with hybrid colorscheme
+"{{{Statusline
 
+function! ChangeStatusLineColour()
+    if (mode() =~# '\v(n|no)')  "regex if-contains case-insentive match with 'very magic' regex
+        exe 'hi! StatusLine ctermfg=white'
+    else
+        exe 'hi! StatusLine ctermfg=007'
+    endif
+endfunction
+
+set showcmd                  " show last command in bottom bar
+set statusline=              " Begin status line
+set statusline+=%{ChangeStatusLineColour()}
+set statusline+=\ Placeholder\
+set statusline+=%.20F        " show file path
+set statusline+=\ -\         " separator
+set statusline+=%m           " Modified flag
+set statusline+=\ -\         " separator
+set statusline+=%=           " Switch to right side
+set statusline+=%1*\ %4l/%4L " Current line / Total Lines
+set laststatus=2             " turn on airline
+highlight User1 ctermfg=red ctermbg=LightGrey 
+"}}}
+"{{{ Plugin settings
 " vim-markdown
 let g:vim_markdown_folding_disabled = 1 "disable auto folding in markdown
 
@@ -57,9 +73,8 @@ let g:vim_markdown_folding_disabled = 1 "disable auto folding in markdown
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
-
 " }}}
-" Remapping/Custom functions {{{
+" Remappings / Custom functions {{{
 let mapleader="," 
 
 "Open Nerdtree tab
@@ -114,5 +129,6 @@ augroup templates
         autocmd BufNewFile * %substitute#\[:VIM_EVAL:\]\(.\{-\}\)\[:END_EVAL:\]#\=eval(submatch(1))#ge
 augroup end
 " }}}
-" Default Folding configs when opening this file
-" vim:foldmethod=marker:foldlevel=0
+" Fold base on {{{ }}} markers 
+setlocal foldmethod=marker
+ 
