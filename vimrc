@@ -46,7 +46,7 @@ set ignorecase " ignore upper/lower cases when searching
 
 function! ChangeStatusLineColour()
     if (mode() =~# '\v(n|no)')  "regex if-contains case-insentive match with 'very magic' regex
-        exe 'hi! StatusLine ctermfg=white'
+        exe 'hi! StatusLine ctermfg=Grey'
     else
         exe 'hi! StatusLine ctermfg=007'
     endif
