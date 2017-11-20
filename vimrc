@@ -8,6 +8,14 @@ Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-commentary'
 Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
+
+" vim-markdown
+let g:vim_markdown_folding_disabled = 1 "disable auto folding in markdown
+
+" vim-easy-align
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
 "}}}
 " General Settings {{{
 " Modeline
@@ -43,37 +51,21 @@ set incsearch  " show partial matches for search phrase
 set ignorecase " ignore upper/lower cases when searching
 "}}}
 "{{{Statusline
-
-function! ChangeStatusLineColour()
-    if (mode() =~# '\v(n|no)')  "regex if-contains case-insentive match with 'very magic' regex
-        exe 'hi! StatusLine ctermfg=Grey'
-    else
-        exe 'hi! StatusLine ctermfg=007'
-    endif
-endfunction
-
-set showcmd                  " show last command in bottom bar
-set statusline=              " Begin status line
-set statusline+=%{ChangeStatusLineColour()}
-set statusline+=\ Placeholder\
-set statusline+=%.20F        " show file path
-set statusline+=\ -\         " separator
-set statusline+=%m           " Modified flag
-set statusline+=\ -\         " separator
-set statusline+=%=           " Switch to right side
-set statusline+=%1*\ %4l/%4L " Current line / Total Lines
-set laststatus=2             " turn on airline
-highlight User1 ctermfg=red ctermbg=LightGrey 
+set showcmd                     " show last command in bottom bar
+set statusline=                 " Begin status line
+set statusline+=%1*\ %{mode()}\ " Show current mode
+set statusline+=%2*
+set statusline+=\ %.20F         " show file path
+set statusline+=\ -\            " separator
+set statusline+=%3*%m           " Modified flag
+set statusline+=%2*\            " separator
+set statusline+=%=              " Switch to right side
+set statusline+=%2*\ %4l/%4L    " Current line / Total Lines
+set laststatus=2                " turn on airline
+highlight User1 ctermfg=white ctermbg=DarkCyan 
+highlight User2 ctermfg=black ctermbg=grey
+highlight User3 ctermfg=white ctermbg=DarkRed
 "}}}
-"{{{ Plugin settings
-" vim-markdown
-let g:vim_markdown_folding_disabled = 1 "disable auto folding in markdown
-
-" vim-easy-align
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
-
-" }}}
 " Remappings / Custom functions {{{
 let mapleader="," 
 
