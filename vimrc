@@ -62,8 +62,8 @@ set statusline+=%2*\            " separator
 set statusline+=%=              " Switch to right side
 set statusline+=%2*\ %4l/%4L    " Current line / Total Lines
 set laststatus=2                " turn on airline
-highlight User1 ctermfg=white ctermbg=DarkCyan 
-highlight User2 ctermfg=black ctermbg=grey
+highlight User1 ctermfg=white ctermbg=DarkMagenta 
+highlight User2 ctermfg=black ctermbg=white
 highlight User3 ctermfg=white ctermbg=DarkRed
 "}}}
 " Remappings / Custom functions {{{
