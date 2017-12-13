@@ -24,13 +24,13 @@ set modelines=1 "check the very last line of this file for modeline
 
 " UI
 colorscheme hybrid  " set colorscheme
-set background=dark " set dark background
 set number          " turn on line numbering
 set colorcolumn=100 " set marker for 100th column
 syntax on           " turn on syntax highlighting
 set cursorline      " highlight current line
 set lazyredraw      " don't bother with redrawing screens in the middle of macros
 set showmatch       " highlights matching [{()}]
+
 set shortmess+=I    " turn off welcome screen
 set title           " changes terminal title
 
@@ -48,7 +48,7 @@ set expandtab     " Pressing TAB = inserting n spaces
 " Search (/)
 set hlsearch   " highlight matches
 set incsearch  " show partial matches for search phrase
-set ignorecase " ignore upper/lower cases when searching
+set ignorecase " case insensitive search
 "}}}
 "{{{Statusline
 set showcmd                     " show last command in bottom bar
@@ -79,12 +79,6 @@ nnoremap <leader>o o<ESC>x
 cabbrev Q quit
 cabbrev Wq wq
 cabbrev W w
-
-" Moving from 1 window to another Ctrl-hjkl
-nnoremap <c-h> <c-w>h
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-l> <c-w>l
 
 "Toggle number line
 nnoremap <leader>1 :set number! number?<CR>
