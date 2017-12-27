@@ -16,9 +16,11 @@ brew install gnu-which
 brew install gnutls
 brew install go
 brew install grep
+brew install grip
 brew install isl
 brew install jpeg
 brew install libffi
+brew install libidn2
 brew install libmpc
 brew install libpng
 brew install libtasn1
@@ -28,6 +30,7 @@ brew install libunistring
 brew install libyaml
 brew install makedepend
 brew install mobile-shell
+brew install mosh
 brew install mpfr
 brew install nettle
 brew install openssl
@@ -37,12 +40,14 @@ brew install pcre
 brew install perl
 brew install pixman
 brew install pkg-config
+brew install postgresql
 brew install protobuf
 brew install python
 brew install r
 brew install readline
 brew install ruby
 brew install screen
+brew install speedtest-cli
 brew install sqlite
 brew install texinfo
 brew install tree
