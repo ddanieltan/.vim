@@ -15,9 +15,13 @@ find . -name .DS_Store -print0 | xargs -0 git rm -f --ignore-unmatch
 :%s/.*/mv -i & &/g
 :w !sh
 
+# Humble Bundle
+# https://gist.github.com/graymouser/a33fbb75f94f08af7e36
 # click all download buttons on webpage
 # rmb to manually change target dir and disable prompt in Chrome Settings
-$("a[data-web*='pdf']").click()
+# $("a[data-web*='pdf']").click() depreciated as HB changed their website
+$('span.label:contains(EPUB)').click()
+
 
 # youtube-dl playlist
 rightclick on playlist and copy link
