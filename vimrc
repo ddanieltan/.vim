@@ -16,6 +16,9 @@ let g:vim_markdown_folding_disabled = 1 "disable auto folding in markdown
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
+" vim-go
+let g:go_version_warning = 0
+
 "}}}
 " General Settings {{{
 " Modeline
