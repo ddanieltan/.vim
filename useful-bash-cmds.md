@@ -30,3 +30,6 @@ youtube-dl -i -o output.flv --yes-playlist <link>
 # Look for files including string
 egrep -lir --include=*.{php,html,js} "string" .
 
+# Restoring db from pg_restore dump
+# Specifying --no-owner allows less errors when restoring from shahram's dump file
+pg_restore -C --no-owner --role dtan -d odb odb.dump
