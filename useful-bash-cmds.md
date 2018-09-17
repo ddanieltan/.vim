@@ -33,3 +33,7 @@ egrep -lir --include=*.{php,html,js} "string" .
 # Restoring db from pg_restore dump
 # Specifying --no-owner allows less errors when restoring from shahram's dump file
 pg_restore -C --no-owner --role dtan -d odb odb.dump
+
+# download sub-repo from a git repo without cloning
+# replace tree/master with trunk
+svn checkout <repo>/trunk/<folder>
